@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-project-2022-frontend-deployment
+  labels:
+    app: my-app
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: my-app
+        tier: frontend
+    spec:
+      containers:
+      - name: devops-project-2022-frontend-container
+        image: {{ .Values.frontenddeployment.image }}:{{ .Values.frontenddeployment.tag }}
+        ports:
+        - containerPort: 3000
+      restartPolicy: Always

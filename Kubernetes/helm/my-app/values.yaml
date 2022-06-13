@@ -1,0 +1,11 @@
+mongodbdeployment:
+  image: petrovskiemil/devops-project-2022-mongodb
+  tag: latest
+
+backenddeployment:
+  image: petrovskiemil/devops-project-2022-backend
+  tag: latest
+
+frontenddeployment:
+  image: petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip
+  tag: latest
