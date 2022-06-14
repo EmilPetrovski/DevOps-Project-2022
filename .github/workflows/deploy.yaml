@@ -31,3 +31,12 @@ jobs:
         docker push petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip-githubactions:1.0.0
         docker push petrovskiemil/devops-project-2022-backend-githubactions:1.0.0
         docker push petrovskiemil/devops-project-2022-mongodb-githubactions:1.0.0
+
+    - name: Update Helm chart
+      run: |
+        cd ../../
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        chmod 700 get_helm.sh
+        ./get_helm.sh
+        cd Kubernetes/helm/
+        helm upgrade my-app my-app --values ./my-app/values.yaml
