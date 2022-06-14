@@ -34,5 +34,6 @@ jobs:
 
     - name: test helm
       run: |
+        minikube start
         cd Kubernetes/helm
         helm upgrade my-app my-app --values ./my-app/values.yaml
