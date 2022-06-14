@@ -15,6 +15,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
   Build images:
+    steps:
     - name: Docker build frontend
       run: |
         docker build ./frontend -t petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip-githubactions:1.0.0
@@ -28,6 +29,7 @@ jobs:
         docker build ./mongo -t petrovskiemil/devops-project-2022-mongodb-githubactions:1.0.0   
 
   Push images:
+    steps:
     - name: Docker push
       run: |
         docker push petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip-githubactions:1.0.0
