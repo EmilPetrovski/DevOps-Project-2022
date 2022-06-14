@@ -36,4 +36,5 @@ jobs:
       run: |
         minikube start
         cd Kubernetes/helm
+        kubectl get all
         helm upgrade my-app my-app --values ./my-app/values.yaml
