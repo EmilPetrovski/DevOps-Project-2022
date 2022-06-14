@@ -1,21 +1,33 @@
 name: Build Docker images and deploy Helm to Kubernetes
 
-on: 
-  push:
-    branches:
-      - 'main'
+on: [push]
 
 jobs: 
   build: 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: docker build frontend
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Docker build frontend
       run: |
         docker build ./frontend -t petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip-githubactions:1.0.0
-    - name: docker build backend
+    
+    - name: Docker build backend
       run: |
         docker build ./backend -t petrovskiemil/devops-project-2022-backend-githubactions:1.0.0
-    - name: docker build mongodb
+    
+    - name: Docker build mongodb
       run: |
-        docker build ./mongo -t petrovskiemil/devops-project-2022-mongodbgithubactions:1.0.0   
+        docker build ./mongo -t petrovskiemil/devops-project-2022-mongodb-githubactions:1.0.0   
+
+    - name: Docker push
+      run: |
+        docker push petrovskiemil/devops-project-2022-frontend-hardcoded-clusterip-githubactions:1.0.0
+        docker push petrovskiemil/devops-project-2022-backend-githubactions:1.0.0
+        docker push petrovskiemil/devops-project-2022-mongodb-githubactions:1.0.0
