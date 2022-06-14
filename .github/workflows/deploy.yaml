@@ -34,4 +34,4 @@ jobs:
 
     - name: test helm
       run: |
-        helm
+        pwd
