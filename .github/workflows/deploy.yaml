@@ -35,6 +35,7 @@ jobs:
 
     - name: Install Helm chart
       run: |
+        minikube start
         cd Kubernetes/helm
         helm package my-app
         helm repo index . --url=https://emilpetrovski.github.io/DevOps-Project-2022/Kubernetes/helm
@@ -44,7 +45,7 @@ jobs:
         kubectl get all
         helm ls
 
-        
+
 #     - name: Install Minikube 
 #       run: |
 #         minikube start
