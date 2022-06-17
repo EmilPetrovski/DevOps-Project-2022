@@ -31,6 +31,7 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.0
         with:
+          charts_dir: Kubernetes/helm/
           charts_repo_url: https://emilpetrovski.github.io/DevOps-Project-2022/charts/
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
