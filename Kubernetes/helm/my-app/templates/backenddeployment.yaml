@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: devops-project-2022-backend-deployment
   labels:
-    app: my-app
+    app: my-apppppppppppp
     tier: backend
 spec:
   replicas: 1
