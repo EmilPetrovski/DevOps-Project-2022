@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: devops-project-2022-backend-deployment
   labels:
-    app: my-apppppppppppp
+    app: my-app #Chart Releaser Pipeline = 03:14/03:15/03:16
     tier: backend
 spec:
   replicas: 1
